@@ -29,11 +29,15 @@ class Car
         get { return speed; }
         set
         {
-            if (value < 0)
+            if (value >= 0)
+            {
+                speed = value;
+            }
+            else
+            {
                 speed = 0;
                 Console.WriteLine("Отрицательная скорость!");
-            else
-                speed = value;
+            }
         }
     }
     public Car(string brand, string model, int year, int speed)
@@ -60,17 +64,18 @@ class Program
 {
     static void Main()
     {
-        Car car1 = new Car("BMW", "M5", 2022, 120);
-        Car car2 = new Car("Audi", "A6", 2020, 90);
+        Car first_car = new Car("BMW", "M5", 2022, 120);
+        Car second_car = new Car("Toyota", "E9", 2011, 70);
         Console.WriteLine("Автомобиль 1");
-        car1.Info();
+        first_car.Info();
         Console.WriteLine("Автомобиль 2");
-        car2.Info();
-        car1.Speed = 200;
-        car1.Info();
-        car1.Speed = -200;
-        car1.Info();
-        car1.Accelerate(50);
-        car1.Info();
+        second_car.Info();
+        first_car.Speed = 200;
+        first_car.Info();
+        first_car.Speed = -200;
+        first_car.Info();
+        first_car.Accelerate(50);
+        first_car.Info();
+        Console.ReadKey();
     }
 }
