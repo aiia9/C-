@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+class Car
+{
+    private string brand;
+    private string model;
+    private int year;
+    private int speed;
+    public string Brand
+    {
+        get { return brand; }
+        set { brand = value; }
+    }
+    public string Model
+    {
+        get { return model; }
+        set { model = value; }
+    }
+    public int Year
+    {
+        get { return year; }
+        set { year = value; }
+    }
+    public int Speed
+    {
+        get { return speed; }
+        set
+        {
+            if (value < 0)
+                speed = 0;
+            else
+                speed = value;
+        }
+    }
+    public Car(string brand, string model, int year, int speed)
+    {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.speed = speed;
+    }
+    public void Accelerate(int value)
+    {
+        speed = speed + value;
+    }
+    public void Info()
+    {
+        Console.WriteLine($"Марка автомобиля: {brand}");
+        Console.WriteLine($"Модель: {model}");
+        Console.WriteLine($"Год выпуска: {year}");
+        Console.WriteLine($"Текущая скорость: {speed} км/ч");
+        Console.WriteLine();
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        Car car1 = new Car("BMW", "M5", 2022, 120);
+        Car car2 = new Car("Audi", "A6", 2020, 90);
+        Console.WriteLine("Автомобиль 1");
+        car1.Info();
+        Console.WriteLine("Автомобиль 2");
+        car2.Info();
+        car1.Speed = 200;
+        car1.Info();
+        car1.Speed = -200;
+        car1.Info();
+        car1.Accelerate(50);
+        car1.Info();
+    }
+}
