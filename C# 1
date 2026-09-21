@@ -31,6 +31,7 @@ class Car
         {
             if (value < 0)
                 speed = 0;
+                Console.WriteLine("Отрицательная скорость!");
             else
                 speed = value;
         }
